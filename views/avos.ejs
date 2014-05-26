@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="myApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><% title %></title>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap-theme.css">
+	<!-- 自定义样式表 -->
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+	<div ng-controller="avos" ng-init="init()">
+
+		<a class="btn" ng-click="getAVOS()">getAVOS</a>
+		<h2>test{{test}}</h2>
+		<h3>{{userdata.length}}</h3>
+		<ul>
+			<li ng-repeat="user in userdata" ng-model="userdata">{{user.name}}</li>
+		</ul>
+		
+	</div>
+
+</body>
+
+	
+<!-- anjular -->
+<script src="https://cn.avoscloud.com/scripts/lib/av-0.3.3.min.js"></script>
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-animate.js"></script>
+<script src="js/myjs.js"></script>
+<script src="js/avos.js"></script>
+</html>
