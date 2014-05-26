@@ -1,14 +1,19 @@
 app.controller('avos', ['$scope', '$rootScope', 
 	function ($scope,$rootScope) {
 
+		$scope.test = 10;
+
 	$scope.init = function(){
 
 		$scope.userdata = [];
+
 		$scope.getAVOS(function(result){
 			console.log("=="+result.length);
 			$scope.userdata = result;
 			$scope.test = result.length;
+			console.log($scope.test);
 		});
+
 	}
 
 
@@ -39,7 +44,9 @@ app.controller('avos', ['$scope', '$rootScope',
 		      console.log(item);
 		      // console.log($scope.userdata);
 		    }
-		    callback(_result);
+		    $rootScope.$apply(function(){
+		    	callback(_result);
+		    });
 		  },
 		  error: function(error) {
 		    alert("Error: " + error.code + " " + error.message);

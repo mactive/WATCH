@@ -14,11 +14,8 @@
 
 	<div ng-controller="avos" ng-init="init()">
 
-		<a class="btn" ng-click="getAVOS()">getAVOS</a>
-		<h2>test{{test}}</h2>
-		<h3>{{userdata.length}}</h3>
 		<ul>
-			<li ng-repeat="user in userdata" ng-model="userdata">{{user.name}}</li>
+			<li ng-repeat="user in userdata">{{user.id}} {{user.name}} </li>
 		</ul>
 		
 	</div>
