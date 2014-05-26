@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><% title %></title>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap/css/bootstrap-theme.css">
+	<!-- 自定义样式表 -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="users" ng-controller="users" ng-class="dataIsReady">
+		<h1>选择你的用户</h1>
+	   	<ul class="users-list">
+	    	<li class="animate-repeat" ng-click="chooseUser()" ng-index="{{$index}}"  ng-model="usersData" ng-repeat="user in usersData">
+		      	<h3>{{user.name}}</h3>
+		      	<p>{{user.phone}}</p>
+		      	<p>{{user.email}}</p>
+	    	</li>
+	  	</ul>
+	</div>
+	<div ng-controller="watch" class="watch-wrap">
+		<div class="watch">
+			<div class="time" ng-cloak>{{watchTime}}</div>
+		</div>
+		<div class="btn-group clearfix">
+			<div class="btn btn-success btn-start" ng-click="watchStart()">开始</div>
+			<div class="btn btn-danger btn-end" ng-click="watchEnd()">停止</div>
+		</div>
+		<ul class="time-list">
+			<li ng-model="userTimes" ng-repeat="time in userTimes">
+				<p> 时间：{{time.time | date:yy-MM-dd}}</p>
+				<p> 时长：{{time.timeLone}}</p>
+			</li>
+		</ul>
+	</div>
+</body>
+<!-- anjular -->
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-animate.js"></script>
+<script src="js/myjs.js"></script>
+</html>
