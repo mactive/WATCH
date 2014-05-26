@@ -61,7 +61,8 @@ app.controller('users', function ($scope,$http,$animate) {
 		$scope.dataIsReady = 'show';
 		// $animate.addClass(anjular.element(document.getElementById('users')),'show');
 	});
-	$scope.chooseUser = function () {
+	$scope.chooseUser = function (username) {
+		console.log("=="+username)
 		$scope.dataIsReady = '';
 	}
 
