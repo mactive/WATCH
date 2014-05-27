@@ -12,10 +12,10 @@
 </head>
 <body>
 
-	<div ng-controller="avos" ng-init="init()">
+	<div ng-controller="avos" ng-init="init()" class="show">
 
 		<ul>
-			<li ng-repeat="user in userdata">{{user.id}} {{user.name}} </li>
+			<li ng-repeat="user in userdata">{{user.id}} {{user.name}}{{'pingbancheng' + user.pingbancheng}} </li>
 		</ul>
 		
 	</div>

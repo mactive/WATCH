@@ -34,7 +34,7 @@ userModel.find(function (err,users) {
 	if(err) {
 		return callback(err)
 	}
-	console.log(users)
+	console.log(users);
 });
 
 

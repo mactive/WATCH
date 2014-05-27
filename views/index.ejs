@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div id="users" ng-controller="users" ng-class="dataIsReady">
+	<div id="users" ng-controller="avos" ng-init="init()" ng-class="dataIsReady">
 		<h1>选择你的用户</h1>
 	   	<ul class="users-list">
-	    	<li class="animate-repeat" ng-click="chooseUser(user)" ng-index="{{$index}}"  ng-model="usersData" ng-repeat="user in usersData">
+	    	<li class="animate-repeat" ng-click="chooseUser(user)" ng-index="{{$index}}" ng-repeat="user in userdata">
 		      	<h3>{{user.name}}</h3>
 		      	<p>{{user.phone}}</p>
 		      	<p>{{user.email}}</p>
@@ -22,22 +22,35 @@
 	</div>
 	<div ng-controller="watch" class="watch-wrap">
 		<div class="watch">
-			<div class="time" ng-cloak>{{watchTime}}</div>
+			<div class="time">{{watchTime || '00:00:00:00'}}</div>
 		</div>
-		<div class="btn-group clearfix">
-			<div class="btn btn-success btn-start" ng-click="watchStart()">开始</div>
-			<div class="btn btn-danger btn-end" ng-click="watchEnd()">停止</div>
+		<div class="clearfix">
+			<div class="btn btn-success btn-start" ng-show="!btnAction" ng-click="watchStart()">开始</div>
+			<div class="btn btn-danger btn-end" ng-show="btnAction" ng-click="watchEnd()">停止</div>
 		</div>
-		<ul class="time-list">
+<!-- 		<ul class="time-list">
 			<li ng-model="userTimes" ng-repeat="time in userTimes">
 				<p> 时间：{{time.time | date:yy-MM-dd}}</p>
 				<p> 时长：{{time.timeLone}}</p>
 			</li>
-		</ul>
+		</ul> -->
+		<div class="chart panel panel-default">
+			<div class="panel-heading">
+				<a href="javascript:void(0)" ng-click="creatChart()" class="btn btn-default">生成图表</a>
+			</div>
+			<div class="panel-body chart-inner">
+				
+			</div>
+		</div>
 	</div>
 </body>
 <!-- anjular -->
+<script src="https://cn.avoscloud.com/scripts/lib/av-0.3.3.min.js"></script>
+
+<!-- <script src="js/lib/jquery.js"></script> -->
 <script src="js/lib/angular.js"></script>
 <script src="js/lib/angular-animate.js"></script>
+<!-- <script src="js/lib/highcharts-all.js"></script> -->
 <script src="js/myjs.js"></script>
+<script src="js/avos.js"></script>
 </html>

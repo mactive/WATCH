@@ -38,7 +38,7 @@ h1 {
 	text-align: center;
 }
 
-div[ng-controller="users"] {
+div[ng-controller="avos"] {
 	position: fixed;bottom: 100%;left: 0;z-index: 9;
 	width: 100%;
 	height: 100%;
@@ -52,7 +52,7 @@ div[ng-controller="users"] {
 	-o-transition: bottom ease-in-out .3s;
 	transition: bottom ease-in-out .3s;
 }
-div[ng-controller="users"].show {
+div[ng-controller="avos"].show {
 	bottom:0;
 }
 .users-list {
@@ -88,4 +88,17 @@ div[ng-controller="watch"] {
 }
 div[ng-controller="watch"].watch-wrap {
 	display: block;
+}
+
+.btn-start, .btn-end {
+	display: block;
+	margin: 0 auto;
+	width: 54px;
+
+}
+.chart {
+	margin: 20px 10px;
+}
+.chart-inner {
+	height: 300px;
 }
