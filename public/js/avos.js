@@ -44,6 +44,9 @@ app.controller('avos', ['$scope', '$rootScope',
 		      console.log(item);
 		      // console.log($scope.userdata);
 		    }
+
+		    		    	// callback(_result);
+
 		    $rootScope.$apply(function(){
 		    	callback(_result);
 		    });
