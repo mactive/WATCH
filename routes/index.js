@@ -2,7 +2,12 @@
 /*
  * GET home page.
  */
+
+ // dbServer
+// var dbServer = require('./routes/dbServer.js');
 var fs = require('fs');
+
+
 module.exports = function(app) {
 	app.get('/', function (req, res) {
 		res.render('index', { title: 'Express' });
@@ -21,4 +26,9 @@ module.exports = function(app) {
     		}
     	});
 	});
+    app.post('/addUsers', function (req,res) {
+        console.log(req.body)
+        res.send({success : true});
+        res.end();
+    });
 };
