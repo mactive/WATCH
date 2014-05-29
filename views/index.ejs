@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div id="users" ng-controller="avos" ng-init="init()" ng-class="dataIsReady">
+	<!-- <input type="text" name="" ng-model="userInfo.name" id=""> -->
 		<h1>选择你的用户</h1>
 	   	<ul class="users-list">
 	    	<li class="animate-repeat" ng-click="chooseUser(user)" ng-index="{{$index}}" ng-repeat="user in userdata">
@@ -21,6 +22,7 @@
 	  	</ul>
 	</div>
 	<div ng-controller="watch" class="watch-wrap">
+	<!-- <input type="text" name="" ng-model="userInfo.name" id=""> -->
 		<div class="watch">
 			<div class="time">{{watchTime || '00:00:00:00'}}</div>
 		</div>
@@ -36,11 +38,15 @@
 		</ul> -->
 		<div class="chart panel panel-default">
 			<div class="panel-heading">
-				<a href="javascript:void(0)" ng-click="creatChart()" class="btn btn-default">生成图表</a>
+				<a href="javascript:void(0)" ng-click="sort()" class="btn btn-default">排序</a>
 			</div>
-			<div class="panel-body chart-inner">
-				
-			</div>
+			<ul class="panel-body chart-inner" ng-model="userTimes">
+				<li ng-model="userTimes" ng-repeat="time in userTimes">
+					<p> 时间：{{time.time | date:yy-MM-dd}}</p>
+					<p> 时长：{{time.timeLone}}</p>
+					</br>
+				</li>
+			</ul>
 		</div>
 	</div>
 </body>

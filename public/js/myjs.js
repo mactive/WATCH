@@ -1,8 +1,11 @@
 var app = angular.module('myApp', [], function () {
 	console.log('app is runing')
 });
-app.controller('watch', function ($scope,$interval,$rootScope) {
+app.controller('watch', ['$scope','$interval','$rootScope',  'userInfoService',
+	function ($scope,$interval,$rootScope,userInfoService) {
+	// $scope.userInfo = userInfoService;
 	var go,flag=true;
+	$scope.userTimes = [];
 	// $scope.watchTime = '00:00:00:00';
 	function init() {
 		flag = true;
@@ -41,20 +44,46 @@ app.controller('watch', function ($scope,$interval,$rootScope) {
 		if(!flag) {
 			flag = true;
 			$interval.cancel(go);
+			var persist = $scope.hour * 3600 + $scope.minutes * 60 + $scope.second + ($scope.ms / 10);
 			$scope.round = {
+				'projectName' : 'pbc',
 				"time" : new Date(),
 				"timeLone" : $scope.hour + '小时' + $scope.minutes + '分钟' + $scope.second + '秒',
-				"timeData" : [$scope.hour,$scope.minutes,$scope.second]
+				"persist" : persist
 			}
-			$rootScope.userTimes.push($scope.round);
-			$rootScope.user.add('pingbancheng',$scope.round);
-			$rootScope.user.save()
+			$scope.userTimes.push($scope.round);
+			// console.log($rootScope.relation)
+			alert($rootScope.byNowUserID)
+			$rootScope.relationDb.save(
+				{
+					'persist' : persist,
+					'projectName' : $scope.round.projectName,
+					'userID' : $rootScope.byNowUserID,
+					'addTime' : new Date()
+				},
+				{
+					success : function (res) {
+						console.log(res)
+					},
+					error : function () {
+
+					}
+				}
+			)
+			// $rootScope.relation.save({'projectName' : 'pbc'}, {
+			// 	success : function () {
+			// 		console.log('data is undated');
+			// 	},
+			// 	error : function () {
+
+			// 	}
+			// })
 			$scope.btnAction = false;
 		}
 	};
 	$scope.creatChart = function () {
 	};
 
-});
+}]);
 
 
