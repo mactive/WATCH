@@ -53,14 +53,20 @@ app.controller('watch', ['$scope','$interval','$rootScope',  'userInfoService',
 			}
 			$scope.userTimes.push($scope.round);
 			// console.log($rootScope.relation)
-			alert($rootScope.byNowUserID)
-			$rootScope.relationDb.save(
-				{
+
+			var userRelation = AV.Object.extend("relation");
+			$rootScope.relationDb = new userRelation();
+			console.log($rootScope.byNowUserID)
+			
+			var temp = {
 					'persist' : persist,
 					'projectName' : $scope.round.projectName,
 					'userID' : $rootScope.byNowUserID,
 					'addTime' : new Date()
-				},
+				};
+
+			$rootScope.relationDb.save(
+				temp,
 				{
 					success : function (res) {
 						console.log(res)
